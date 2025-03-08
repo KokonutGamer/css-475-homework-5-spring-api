@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.NonNull;
 
@@ -14,6 +16,12 @@ public class Employee {
     private @NonNull String employeenum;
     private @NonNull String name;
     private @NonNull String email;
-    private @NonNull Integer departmentid;
+
+    // Foreign key handling
+    @NonNull
+    @ManyToOne
+    @JoinColumn(name = "departmentid")
+    private Department department;
+
     private @NonNull BigDecimal salary;
 }
